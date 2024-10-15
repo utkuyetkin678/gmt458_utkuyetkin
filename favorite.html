@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Place</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        /* Harita alanı için stil */
+        .map {
+            width: 100%;
+            height: 400px; /* Harita yüksekliği */
+            border: 1px solid #ccc; /* Kenar çizgisi */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Favorite Place</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="background.html">Background</a></li>
+                <li><a href="technologies.html">Technologies</a></li>
+                <li><a href="hobby.html">Hobby</a></li>
+                <li><a href="favorite.html">Favorite Place</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>My Favorite Place in Ankara</h2>
+        <div id="map" class="map"></div>
+    </section>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Harita oluşturma
+        var map = L.map('map').setView([39.9334, 32.8597], 12); // Ankara koordinatları
+
+        // OpenStreetMap katmanı ekleme
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // İşaretçi ekleme
+        var marker = L.marker([39.993264, 32.653994]).addTo(map);
+        marker.bindPopup('My Favorite Place in Ankara').openPopup();
+    </script>
+</body>
+</html>
